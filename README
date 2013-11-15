@@ -1,0 +1,74 @@
+Computer Graphics - Assignment 5
+
+Participant:
+  Jian Ru, 10389231, 272781889@qq.com
+
+Content Description:
+  bin/
+    - This directory contains the executable file. It can be run directly on Windows OS if
+      it's configured with OpenGL.
+
+  *** REMOVED IN CASE OF COPYRIGHT INFRINGEMENT ***
+  data/
+    subdividable_models/
+      - This directory contains the model files that are dividable using loop subdivision.
+    test_textures/
+      - This directory contains the texture images used for testing.
+  *** REMOVED IN CASE OF COPYRIGHT INFRINGEMENT ***
+
+  src/
+    - This directory contains the files necessary for building the program if all external
+      dependencies exist.
+
+External Dependancies:
+  1. OpenGL and its utility library.
+  2. Simple OpenGL Imaging Library (SOIL).
+  3. Windows platform (tested on Windows 7).
+
+Glitches or Limitations:
+  1. The program is MDI but it support only one MDI child window currently. Considering the
+     load of 3D processing, I restrict only one model can be displayed and manipulated.
+     Please don't close the MDI child window. If you close it, you cannot restart it inside
+     the program and then you need to restart the program in order to get it back. I have
+     considered disable the closing functionality of the child window but I failed to find
+     out a solution after long struggling.
+  2. Hiden toolbar buttons. If you maximize the program window, you will discover that the
+     toolbar buttons are disappeared. They are still there, actually, but they are not
+     displayed. If you click on them, they will show up again. I also tried many times to
+     fix this problem but I really could not handle it.
+  3. Restrictions on model files. The model files are required to be composed of triangluar
+     meshes. In testing, all models using triangular meshes can be read and displayed.
+     Hitherto, the program won't fill the holes in models. It can perform loop subdivision
+     on models if the models have no singularity. The program is relatively robust in loop
+     subdivision since it can handle the cases like: very large and detailed models, and
+     models that are not closed (e.g. a single plane, a cube with some facets missing).
+     Nevertheless, if the models contain singularity (e.g. more than two facets share the
+     same edges), it won't be able to subdivide the model and it will freeze.
+  4. Normals and texture coordinates are not considered in loop subdivision. Thus if you
+     perform loop subdivision, you can only view the results in wired form.
+  5. The program builds half-edge datastructure for incoming models and thus it can be very
+     slow as the model files get too large.
+  6. The program can only read .obj files currently.
+  7. The path to the .obj file and the name of the file itself can contain ASCII characters.
+     If the they contain non-ASCII characters, the program won't be able to read the file
+     and it will freeze.
+
+User Manual
+  1. Open a model file
+    Click the "File" tab on the menu bar and then click "Open" or use shortcut key.
+    Navigate to the .obj file and choose it. Wait for the loading process to finish.
+  2. Translate, rotate, or scale a model
+    You need to open a model file before doing these. Click on the corresponding buttons on
+    the toolbar. To translate or rotate models, hold left button and drag when the
+    corresponding buttons are pressed. To scale, roll the mouse wheel when the scaling button
+    is pressed.
+  3. Loop subdivision
+    Just click the corresponding button on the toolbar.
+  4. Texturing
+    Click the toolbar button with an uppercase letter T. Then, navigate to the texture image
+    and choose it. Then model should have texture coordinates and normals for this to work.
+  5. Lighting
+    Click on the light bulb on the toolbar to enable or disable lighting.
+  6. Exit
+    You can either exit the program using the menu item under the "File" tab or the "x"
+    button on the upper-right corner.
